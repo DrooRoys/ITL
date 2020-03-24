@@ -14,8 +14,8 @@ public class AFD {
     protected String estadosFinales;
     protected Node [] estados;
     
-    protected Map<Node, Node[]> columna0;
-    protected Array [] columnasA;
+    protected Map<Node, Node[][]> columna0;
+    protected Array [][] columnasA;
     
     public AFD(String alfabeto,int noEstados){
         this.alfabeto = alfabeto;
@@ -52,10 +52,12 @@ public class AFD {
     public void compararEstados(){
         this.columna0 = new TreeMap();
         int a = this.alfabeto.split(",").length;
-        columnasA = new Array[a];
-        Array[] aux = new Array[2];
+        columnasA = new Array[a][2];
+        int x=0;
+        Array[][] aux = new Array[1][2];
+        aux[0][0]= //estado inicial de m1
+        columna0.put(x, estados);
         
-        int i=0;
         
         
         
