@@ -1,7 +1,9 @@
 package afdequivalent;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.JOptionPane;
 
 
@@ -11,6 +13,9 @@ public class AFD {
     protected String estadoInicial;
     protected String estadosFinales;
     protected Node [] estados;
+    
+    protected Map<Node, Node[]> columna0;
+    protected Array [] columnasA;
     
     public AFD(String alfabeto,int noEstados){
         this.alfabeto = alfabeto;
@@ -42,5 +47,19 @@ public class AFD {
             
             estados[i].llenarTransiciones(this.alfabeto);
         }
+    }
+    
+    public void compararEstados(){
+        this.columna0 = new TreeMap();
+        int a = this.alfabeto.split(",").length;
+        columnasA = new Array[a];
+        Array[] aux = new Array[2];
+        
+        int i=0;
+        
+        
+        
+                
+           
     }
 }

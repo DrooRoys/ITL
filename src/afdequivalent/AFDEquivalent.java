@@ -7,8 +7,8 @@ package afdequivalent;
 import javax.swing.JOptionPane;
 
 public class AFDEquivalent {
-    private AFD m1;
-    private AFD m2;
+    protected AFD m1;
+    protected AFD m2;
 
     public static void main(String[] args) {
         AFDEquivalent e = new AFDEquivalent();
@@ -26,7 +26,6 @@ public class AFDEquivalent {
         int noEstadosM2 = Integer.parseInt(JOptionPane.showInputDialog("No. de estados M2 :"));
         m2 = new AFD(alfabeto,noEstadosM2);
         m2.llenarEstados();
-        
     }
     
 }
