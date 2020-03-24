@@ -8,37 +8,27 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class AFDEquivalent {
-    public String[] leng;
+    private AFD m1;
+    private AFD m2;
 
     public static void main(String[] args) {
         AFDEquivalent e = new AFDEquivalent();
         e.inicio();
     }
     
-    public void inicio(){            
-        String l = JOptionPane.showInputDialog("Lenguaje (∑={0,1}):");
-        leng = new String[l.length()];
-        leng = l.split(",");
-
-        int e = Integer.parseInt(JOptionPane.showInputDialog("No. de Estados:"));
-        for(int i=0;i<e;i++){
-            String name = JOptionPane.showInputDialog("Nombre del Estado No. " + i);
-            boolean ini, fina;
-            if(JOptionPane.showConfirmDialog(null, "El Estado '" + name 
-                    + "' ¿Es Inicial?", "Estado " + i, JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
-                ini=true;
-            }else{
-                ini=false;
-            }
-            if(JOptionPane.showConfirmDialog(null, "El Estado '" + name 
-                    + "' ¿Es Final?", "Estado " + i, JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
-                fina=true;
-            }else{
-                fina=false;
-            }
-            
-            Node node = new Node(name,ini,fina);
-        }
+    public void inicio(){ 
+        
+       
+        String alfabeto = JOptionPane.showInputDialog("Alfabeto (∑={0,1}):");    
+        int noEstadosM1 = Integer.parseInt(JOptionPane.showInputDialog("No. de estados M1:"));    
+        int noEstadosM2 = Integer.parseInt(JOptionPane.showInputDialog("No. de estados M2 :"));
+        
+        m1 = new AFD(alfabeto,noEstadosM1);
+        m2 = new AFD(alfabeto,noEstadosM2);
+        
+        m1.llenarEstados();
+        m2.llenarEstados();
+        
     }
     
 }
