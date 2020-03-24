@@ -24,4 +24,9 @@ public class Node {
                     "La transicion de " + this.nombre + " cuando es (" + simbolo + ") va hacia:"));
         }
     }
+    
+    
+    public String getTransicion(String simbolo){
+        return this.transiciones.get(simbolo);
+    }
 }
