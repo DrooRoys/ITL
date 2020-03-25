@@ -93,7 +93,7 @@ public class AFD {
         int i = 0;
         do {
             aux = columna0.get(i);
-            System.out.println("Columna 0  -->  " + columna0.get(i).toString());
+            System.out.println("Columna 0  -->  ");
             verificarEstadosEnColumna0(aux[0],aux[1]);
             i=i+1;
         } while(this.compatible==true);
@@ -134,7 +134,9 @@ public class AFD {
         int x = 0;
         for (String simbolo : this.alfabeto.split(",")) {
             a = obtenerNodo(aux[0].getTransicion(simbolo));
+            System.out.println(" " + a.nombre);
             b = obtenerNodo(aux[1].getTransicion(simbolo));
+            System.out.println(" " + b.nombre + b.fina + b.inicial);
 
             if (a.fina && b.fina || a.inicial && b.inicial) {
                 columnas[x] = new Comparacion(simbolo, a, b);
