@@ -9,4 +9,9 @@ public class Comparacion {
         nodos[0] = estado1;
         nodos[1] = estado2;
     }
+    
+    public Node[] getEstadosColumna(String nombreColumna){
+        return this.nodos;
+    }
+
 }
