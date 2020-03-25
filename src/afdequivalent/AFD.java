@@ -13,10 +13,10 @@ public class AFD {
     protected String estadoInicial;
     protected String estadosFinales;
     protected Node[] estados;
-    private boolean compatible=true;
+//    private boolean compatible=true;
 
-    protected Map<Integer, Node[]> columna0;
-    protected Comparacion[] columnas;
+//    protected Map<Integer, Node[]> columna0;
+//    protected Comparacion[] columnas;
 
     public AFD(String alfabeto, int noEstados) {
         this.alfabeto = alfabeto;
@@ -82,74 +82,5 @@ public class AFD {
         return f;
     }
 
-    public void compararAutomatas(Node iM1, Node iM2) {
-        Node[] aux = new Node[2];
-        aux[0] = iM1;
-        aux[1] = iM2;
-        this.columna0 = new TreeMap();
-        
-        columna0.put(0, aux);
-        
-        int i = 0;
-        do {
-            aux = columna0.get(i);
-            System.out.println("Columna 0  -->  ");
-            verificarEstadosEnColumna0(aux[0],aux[1]);
-            i=i+1;
-        } while(this.compatible==true);
-        
-        if(this.compatible==true){
-            System.out.println("LOS AUTOMATAS SI SON EQUIVALENTES");
-        }else{
-            System.out.println("LOS AUTOMATAS NO SON EQUIVALENTES");
-        }
-    }
-
-    public void verificarEstadosEnColumna0(Node iM1, Node iM2) {
-        Node[] aux = new Node[2];
-        aux[0] = iM1;
-        aux[1] = iM2;
-        //this.columna0 = new TreeMap();
-        int z = this.alfabeto.split(",").length;
-        int k = 0;
-
-        llenarFilaDeSimbolos(aux[0], aux[1]);
-
-        for (int i = 0; i < z; i++) {
-            if (!columna0.containsValue(columnas[i].nodos)) {
-                k = k + 1;
-                columna0.put(k, columnas[i].nodos);
-                //System.out.println("Columna 0 -->   " + columna0.get);
-            }
-        }
-    }
-
-    public void llenarFilaDeSimbolos(Node m1, Node m2) {
-        int z = this.alfabeto.split(",").length;
-        columnas = new Comparacion[z];
-        Node[] aux = new Node[2];
-        Node a, b;
-        aux[0] = m1;
-        aux[1] = m2;
-        int x = 0;
-        for (String simbolo : this.alfabeto.split(",")) {
-            a = obtenerNodo(aux[0].getTransicion(simbolo));
-            System.out.println(" " + a.nombre);
-            b = obtenerNodo(aux[1].getTransicion(simbolo));
-            System.out.println(" " + b.nombre + b.fina + b.inicial);
-
-            if (a.fina && b.fina || a.inicial && b.inicial) {
-                columnas[x] = new Comparacion(simbolo, a, b);
-                System.out.println(simbolo + "  -->  " + a + ", " + b);
-                x++;
-            } else {
-                System.out.println("En el simbolo " + simbolo + "los estados "
-                        + a + " y " + b + "NO son compatibles");
-                this.compatible = false;
-                break;
-            }
-        } //en este for se genera el array de columnas del alfabeto UNA FILA en moore
-        //      a       b       c
-        //    q2,r2   q1,r1
-    }
+    
 }

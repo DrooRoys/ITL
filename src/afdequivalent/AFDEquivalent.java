@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 public class AFDEquivalent {
     protected AFD m1;
     protected AFD m2;
+    public String alfabeto;
 
     public static void main(String[] args) {
         AFDEquivalent e = new AFDEquivalent();
@@ -19,7 +20,7 @@ public class AFDEquivalent {
     public void inicio(){ 
         
        
-        String alfabeto = JOptionPane.showInputDialog("Alfabeto (∑={0,1}):");    
+        alfabeto = JOptionPane.showInputDialog("Alfabeto (∑={0,1}):");    
         int noEstadosM1 = Integer.parseInt(JOptionPane.showInputDialog("No. de estados M1:"));
         m1 = new AFD(alfabeto,noEstadosM1);
         m1.llenarEstados();
@@ -30,7 +31,9 @@ public class AFDEquivalent {
     }
     
     public void comprobarEquivalencia(){
-        m1.compararAutomatas(m1.obtenerNodoInicial(), m2.obtenerNodoInicial());
+        Equivalencia eq = new Equivalencia(m1,m2,alfabeto);
+        eq.compararAutomatas(m1.obtenerNodoInicial(), m2.obtenerNodoInicial());
+        //m1.compararAutomatas(m1.obtenerNodoInicial(), m2.obtenerNodoInicial());
     }
     
 }
