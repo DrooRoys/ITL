@@ -25,9 +25,7 @@ public class Node {
         }
     }
     
-    
     public String getTransicion(String simbolo){
         return this.transiciones.get(simbolo);
     }
-    
 }

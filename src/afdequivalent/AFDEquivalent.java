@@ -1,6 +1,9 @@
 /*
  * LENGUAJES Y AUTOMATAS I - EQUIVALENCIA ENTRE DOS AFD's (25-03-20)
  * Programa No. 01
+ *por:
+ *  GOMEZ GUIZAR CRISTIAN ROGELIO
+ *  LOPEZ SOTO IVAN DE JESUS
  */
 package afdequivalent;
 
@@ -18,8 +21,6 @@ public class AFDEquivalent {
     }
     
     public void inicio(){ 
-        
-       
         alfabeto = JOptionPane.showInputDialog("Alfabeto (∑={0,1}):");    
         int noEstadosM1 = Integer.parseInt(JOptionPane.showInputDialog("No. de estados M1:"));
         m1 = new AFD(alfabeto,noEstadosM1);
@@ -33,7 +34,5 @@ public class AFDEquivalent {
     public void comprobarEquivalencia(){
         Equivalencia eq = new Equivalencia(m1,m2,alfabeto);
         eq.compararAutomatas(m1.obtenerNodoInicial(), m2.obtenerNodoInicial());
-        //m1.compararAutomatas(m1.obtenerNodoInicial(), m2.obtenerNodoInicial());
     }
-    
 }

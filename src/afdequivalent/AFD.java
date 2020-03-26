@@ -1,9 +1,5 @@
 package afdequivalent;
 
-import java.lang.reflect.Array;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
 import javax.swing.JOptionPane;
 
 public class AFD {
@@ -13,10 +9,6 @@ public class AFD {
     protected String estadoInicial;
     protected String estadosFinales;
     protected Node[] estados;
-//    private boolean compatible=true;
-
-//    protected Map<Integer, Node[]> columna0;
-//    protected Comparacion[] columnas;
 
     public AFD(String alfabeto, int noEstados) {
         this.alfabeto = alfabeto;
@@ -44,7 +36,7 @@ public class AFD {
             this.estadosFinales += fina ? name + "," : "";
 
             estados[i] = new Node(name, ini, fina);
-
+            
             estados[i].llenarTransiciones(this.alfabeto);
         }
     }
@@ -56,7 +48,6 @@ public class AFD {
                 estado = tmp;
             }
         }
-
         return estado;
     }
 
@@ -67,7 +58,6 @@ public class AFD {
                 estado = tmp;
             }
         }
-
         return estado;
     }
 
@@ -78,9 +68,6 @@ public class AFD {
                 f = true;
             }
         }
-
         return f;
     }
-
-    
 }
