@@ -5,19 +5,21 @@
  *  GOMEZ GUIZAR CRISTIAN ROGELIO
  *  LOPEZ SOTO IVAN DE JESUS
  */
-package afdequivalent;
+package afdsimplificacion;
 
 import javax.swing.JOptionPane;
 
 public class AFDEquivalent {
     protected AFD m1;
     protected AFD m2;
+    protected AFD m3;
     public String alfabeto;
 
     public static void main(String[] args) {
         AFDEquivalent e = new AFDEquivalent();
-        e.inicio();
-        e.comprobarEquivalencia();
+        //e.inicio();
+        //e.comprobarEquivalencia();
+        e.simplificarAFD();
     }
     
     public void inicio(){ 
@@ -34,5 +36,16 @@ public class AFDEquivalent {
     public void comprobarEquivalencia(){
         Equivalencia eq = new Equivalencia(m1,m2,alfabeto);
         eq.compararAutomatas(m1.obtenerNodoInicial(), m2.obtenerNodoInicial());
+    }
+    
+    public void simplificarAFD(){
+        alfabeto = JOptionPane.showInputDialog("Alfabeto (∑={0,1}):");    
+        int noEstadosM1 = Integer.parseInt(JOptionPane.showInputDialog("No. de estados M1:"));
+        m3 = new AFD(alfabeto,noEstadosM1);
+        m3.llenarEstados();
+        
+        Simplificacion sim = new Simplificacion(m3,alfabeto,noEstadosM1);
+        sim.simplificarA();
+        
     }
 }

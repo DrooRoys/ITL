@@ -1,4 +1,4 @@
-package afdequivalent;
+package afdsimplificacion;
 
 public class Comparacion {
     protected String nombreColumna;

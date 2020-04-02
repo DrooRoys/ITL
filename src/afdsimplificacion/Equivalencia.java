@@ -1,4 +1,4 @@
-package afdequivalent;
+package afdsimplificacion;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -46,7 +46,8 @@ public class Equivalencia {
         return cad;
     }
 
-    public void compararAutomatas(Node iM1, Node iM2) {
+    public boolean compararAutomatas(Node iM1, Node iM2) {
+        boolean equiv = false;
         Node[] aux = new Node[2];
         aux[0] = iM1;
         aux[1] = iM2;
@@ -74,6 +75,7 @@ public class Equivalencia {
 
         if (this.compatible == true) {
             System.out.println("\nLOS AUTOMATAS SI SON EQUIVALENTES\n");
+            equiv = true;
             aux[0] = columna0.get(columna0.size() - 1)[0];
             aux[1] = columna0.get(columna0.size() - 1)[1];
 
@@ -84,8 +86,10 @@ public class Equivalencia {
             System.out.println(listaAlfabeto);
         } else {
             System.out.println("\nLOS AUTOMATAS NO SON EQUIVALENTES");
+            
         }
 
+        return equiv;
     }
 
     public boolean verificarEstadosEnColumna0(Node iM1, Node iM2) {
@@ -141,8 +145,8 @@ public class Equivalencia {
 
         for (String simbolo : this.alfabeto.split(",")) {
 
-            a = this.m1.obtenerNodo(aux[0].getTransicion(simbolo));
-            b = this.m2.obtenerNodo(aux[1].getTransicion(simbolo));
+            a = this.m1.obtenerNodo(aux[0].getTransicionDeSimbolo(simbolo));
+            b = this.m2.obtenerNodo(aux[1].getTransicionDeSimbolo(simbolo));
 
             if ((a.fina && b.fina) || (!a.fina && !b.fina)) {
                 columnas[x] = new Comparacion(simbolo, a, b);
